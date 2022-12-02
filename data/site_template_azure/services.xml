@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+    <service-credential service-credential-id="azure.userinfo.cred">
+        <url>https://graph.microsoft.com/oidc/userinfo</url>
+        <user-id/>
+        <password/>
+    </service-credential>
+
+    <service-profile service-profile-id="azure.profile">
+        <timeout-millis>5000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>3</cb-calls>
+        <cb-millis>10000</cb-millis>
+    </service-profile>
+
+    <service service-id="azure.http.userinfo">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>azure-userinfo</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>false</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>azure.profile</profile-id>
+        <credential-id>azure.userinfo.cred</credential-id>
+    </service>
+
+</services>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oauth-providers xmlns="http://www.demandware.com/xml/impex/oauthprovider/2013-07-16">
+    <oauth-provider provider-id="Azure">
+        <description>Azure OAuth Provider</description>
+        <client-id/>
+        <client-secret/>
+        <scopes>openid,email,profile</scopes>
+        <authorization-url>https://login.microsoftonline.com/common/oauth2/v2.0/authorize</authorization-url>
+        <token-url>https://login.microsoftonline.com/common/oauth2/v2.0/token</token-url>
+        <user-info-url>https://graph.microsoft.com/oidc/userinfo</user-info-url>
+        <access-token-name>access_token</access-token-name>
+        <redirect-pipeline-node>Login-OAuthReentryAzure</redirect-pipeline-node>
+    </oauth-provider>
+
+</oauth-providers>

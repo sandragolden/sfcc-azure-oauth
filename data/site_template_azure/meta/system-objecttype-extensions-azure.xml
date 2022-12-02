@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="enableMergeExternalAccounts">
+                <display-name xml:lang="x-default">Merge External Accounts</display-name>
+                <description xml:lang="x-default">When using external providers, attempt to merge existing customer accounts prior to creating external customer</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>false</default-value>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="ExternalAccounts">
+                <display-name xml:lang="x-default">External Accounts</display-name>
+                <attribute attribute-id="enableMergeExternalAccounts"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+</metadata>

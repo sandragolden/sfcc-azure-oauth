@@ -1,0 +1,27 @@
+{
+  "name": "sfcc-azure-oauth",
+  "version": "1.0.0",
+  "description": "Azure OAuth with SFRA",
+  "license": "UNLICENSED",
+  "scripts": {
+    "lint": "sgmf-scripts --lint js",
+    "uploadCartridge": "sgmf-scripts --uploadCartridge int_azure",
+    "data:zip:main": "cd data && bestzip site_template_azure.zip site_template_azure/* && shx mv site_template_azure.zip ../site_template_azure.zip"
+  },
+  "author": "Sandra Golden <sgolden@salesforce.com>",
+  "devDependencies": {
+    "bestzip": "^2.2.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint-plugin-import": "^1.16.0",
+    "sgmf-scripts": "^2.3.0",
+    "shx": "^0.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandragolden/sfcc-azure-oauth.git"
+  },
+  "paths": {
+    "base": "../storefront-reference-architecture/cartridges/app_storefront_base/"
+  }
+}
