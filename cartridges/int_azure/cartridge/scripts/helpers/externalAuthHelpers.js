@@ -42,12 +42,28 @@ const createExternalCustomer = (userId, providerId, profileInfo) => {
         Transaction.wrap(function () {
             // if site preference is enabled, attempt to merge customer profile with existing profile
             if (getSitePreference('enableMergeExternalAccounts')) {
-                Logger.debug(`User id: ${userId} not found, searching for customer profile: ${email}`);
+                Logger.debug(`User id: ${userId} not found, searching for customer profile using CustomerMgr.getCustomerByLogin: ${email}`);
                 var customerByLogin = CustomerMgr.getCustomerByLogin(email);
                 // if customer exists, create external profile
                 if (customerByLogin) {
                     customerProfile = customerByLogin.getProfile();
                     externalProfile = customerByLogin.createExternalProfile(providerId, userId);
+                } else {
+                    Logger.debug(`User id: ${userId} not found, querying for customer profile using CustomerMgr.searchProfiles: ${email}`);
+                    // search by email if login does not equal the email address
+                    const profiles = CustomerMgr.searchProfiles('email = {0}', null, email).asList().toArray();
+                    if (profiles.length) {
+                        for (var i = 0; i < profiles.length; i++) {
+                            var profile = profiles[i];
+                            var credentials = profile.getCredentials();
+                            if (credentials.isEnabled()) {
+                                customerProfile = profile;
+                                var customerFromProfile = customerProfile.getCustomer();
+                                externalProfile = customerFromProfile.createExternalProfile(providerId, userId);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
 
